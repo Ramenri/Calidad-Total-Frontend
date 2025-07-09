@@ -48,7 +48,7 @@ export const FormularioExtenderContrato = ({
       const token = localStorage.getItem('token');
       
 
-      const respuesta = await fetch(`http://127.0.0.1:5000/contrato/extender/${contrato.id}`, {
+      const respuesta = await fetch(`http://192.160.1.202:5000/contrato/extender/${contrato.id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ export const FormularioExtenderContrato = ({
       formData.append('id_contrato', contrato.id);                
       formData.append('cedula', cedulaOperario);  
 
-      const respuestaFile = await fetch(`http://127.0.0.1:5000/documento/guardar`, {
+      const respuestaFile = await fetch(`http://192.160.1.202:5000/documento/guardar`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

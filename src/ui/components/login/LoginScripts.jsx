@@ -5,7 +5,7 @@ export const handleLogin = async (event, navigate) =>{
     const contraseña = document.getElementById('contraseña').value;
 
     try{
-        const response = await fetch('http://127.0.0.1:5000/usuario/login', {
+        const response = await fetch('http://192.160.1.202:5000/usuario/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

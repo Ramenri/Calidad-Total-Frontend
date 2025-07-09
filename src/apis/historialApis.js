@@ -1,5 +1,5 @@
 export const obtenerTodosHistorial = async () => {
-    const response = await fetch("http://localhost:5000/historial/obtenerTodos", {
+    const response = await fetch("http://192.160.1.202:5000/historial/obtenerTodos", {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

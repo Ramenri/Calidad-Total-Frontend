@@ -1,6 +1,6 @@
 export const obtenerEmpresaPorId = async (idEmpresa) => {
     try {
-        const response = await fetch(`http://127.0.0.1:5000/empresa/buscarPorUuid?uuid=${idEmpresa}`);
+        const response = await fetch(`http://192.160.1.202:5000/empresa/buscarPorUuid?uuid=${idEmpresa}`);
         const data = await response.json();
         return data;
     } catch (error) {
@@ -9,7 +9,7 @@ export const obtenerEmpresaPorId = async (idEmpresa) => {
 }
 export const obtenerTodasLasEmpresas = async () => {
     try {
-        const response = await fetch(`http://127.0.0.1:5000/empresa/todo`);
+        const response = await fetch(`http://192.160.1.202:5000/empresa/todo`);
         const data = await response.json();
             return data;
     } catch (error) {
@@ -20,7 +20,7 @@ export const obtenerTodasLasEmpresas = async () => {
 export const crearNuevaEmpresa = async (empresa) => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://127.0.0.1:5000/empresa/crear`, {
+        const response = await fetch(`http://192.160.1.202:5000/empresa/crear`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ export const crearNuevaEmpresa = async (empresa) => {
 export const actualizarEmpresaPorId = async (empresa) => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://127.0.0.1:5000/empresa/actualizar/${empresa.id}`, {
+        const response = await fetch(`http://192.160.1.202:5000/empresa/actualizar/${empresa.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ export const actualizarEmpresaPorId = async (empresa) => {
 
 export const obtenerEmpresasDelOperarioNoAfiliadas = async (cedulaOperario) => {
     try {
-        const response = await fetch(`http://127.0.0.1:5000/empresa/obtenerEmpresasDelOperarioNoAfiliadas/${cedulaOperario}`);
+        const response = await fetch(`http://192.160.1.202:5000/empresa/obtenerEmpresasDelOperarioNoAfiliadas/${cedulaOperario}`);
         const data = await response.json();
         return data;
     } catch (error) {

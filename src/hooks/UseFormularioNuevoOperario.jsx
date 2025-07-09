@@ -79,7 +79,7 @@ export const useFormularioNuevoOperario = (buscarOperariosCallback) => {
   useEffect(() => {
     const cargarTodosCentros = async () => {
       try {
-        const data = await fetchConManejoErrores("http://127.0.0.1:5000/centroTrabajo/todo");
+        const data = await fetchConManejoErrores("http://192.160.1.202:5000/centroTrabajo/todo");
         setCentros(data);
       } catch (error) {
         console.error("Error al cargar centros:", error);
@@ -123,7 +123,7 @@ export const useFormularioNuevoOperario = (buscarOperariosCallback) => {
       formData.append("fecha_expedicion", fechaExpedicion);
       formData.append("cedula", nuevoOperario.numero_cedula);
 
-      const response = await fetch("http://127.0.0.1:5000/documento/guardar", {
+      const response = await fetch("http://192.160.1.202:5000/documento/guardar", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -145,7 +145,7 @@ export const useFormularioNuevoOperario = (buscarOperariosCallback) => {
     let contratoId = null;
 
     try {
-      const operarioResponse = await fetchConManejoErrores("http://127.0.0.1:5000/operario/crear", {
+      const operarioResponse = await fetchConManejoErrores("http://192.160.1.202:5000/operario/crear", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -163,7 +163,7 @@ export const useFormularioNuevoOperario = (buscarOperariosCallback) => {
 
       operarioId = operarioResponse.id;
 
-      const contratoResponse = await fetchConManejoErrores("http://127.0.0.1:5000/contrato/crear", {
+      const contratoResponse = await fetchConManejoErrores("http://192.160.1.202:5000/contrato/crear", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -189,7 +189,7 @@ export const useFormularioNuevoOperario = (buscarOperariosCallback) => {
       console.error("Error guardando operario:", error);
       if (operarioId) {
         try {
-          await fetchConManejoErrores(`http://127.0.0.1:5000/operario/eliminar/${operarioId}`, {
+          await fetchConManejoErrores(`http://192.160.1.202:5000/operario/eliminar/${operarioId}`, {
             method: "DELETE",
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

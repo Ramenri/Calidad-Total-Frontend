@@ -1,6 +1,6 @@
 export const obtenerUsuarioPorId = async (idUsuario) => {
     try {
-        const response = await fetch(`http://127.0.0.1:5000/usuario/buscar/${idUsuario}`)
+        const response = await fetch(`http://192.160.1.202:5000/usuario/buscar/${idUsuario}`)
         const data = await response.json();
         return data
     } catch (error) {
@@ -11,7 +11,7 @@ export const obtenerUsuarioPorId = async (idUsuario) => {
 export const crearUnionConOperario = async (dataInfo) => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://127.0.0.1:5000/usuario/crearUnionConOperario`, {
+        const response = await fetch(`http://192.160.1.202:5000/usuario/crearUnionConOperario`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ export const crearUnionConOperario = async (dataInfo) => {
 export const crearAdmin = async (dataInfo) => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://127.0.0.1:5000/usuario/crearAdmin`, {
+        const response = await fetch(`http://192.160.1.202:5000/usuario/crearAdmin`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ export const crearAdmin = async (dataInfo) => {
 export const eliminarAdmin = async (idAdmin) => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://127.0.0.1:5000/usuario/eliminarAdmin/${idAdmin}`, {
+        const response = await fetch(`http://192.160.1.202:5000/usuario/eliminarAdmin/${idAdmin}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

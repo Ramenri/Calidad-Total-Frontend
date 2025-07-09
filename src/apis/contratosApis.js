@@ -1,6 +1,6 @@
 export const obtenerTodosLosContratosPorIdOperarioYEmpresa =  async (idEmpresa, idOperario) => {
     try {
-        const response = await fetch(`http://127.0.0.1:5000/contrato/buscarPorOperario/${idOperario}?empresa=${idEmpresa}`);
+        const response = await fetch(`http://192.160.1.202:5000/contrato/buscarPorOperario/${idOperario}?empresa=${idEmpresa}`);
         const data = await response.json();
         return data;
     } catch (error) {
@@ -12,7 +12,7 @@ export const handleDescargarContrato = async (idContrato) => {
     try {
   
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://127.0.0.1:5000/documento/juntar/pdf/${idContrato}`, {
+      const response = await fetch(`http://192.160.1.202:5000/documento/juntar/pdf/${idContrato}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ export const handleDescargarContrato = async (idContrato) => {
 export const handlerEditarEstadoDelContrato = async (idContrato, estado) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://127.0.0.1:5000/contrato/actualizarEstado/${idContrato}`, {
+      const response = await fetch(`http://192.160.1.202:5000/contrato/actualizarEstado/${idContrato}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ export const crearContrato = async (formData) => {
 
         const token = localStorage.getItem('token');
 
-        const response = await fetch("http://127.0.0.1:5000/contrato/crear", {
+        const response = await fetch("http://192.160.1.202:5000/contrato/crear", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -79,7 +79,7 @@ export const crearContrato = async (formData) => {
 export const handlerEditarFechaFinDelContrato = async (idContrato, fechaFin) => {
   try {
     const token = localStorage.getItem('token');
-    const response = await fetch(`http://127.0.0.1:5000/contrato/extender/${idContrato}`, {
+    const response = await fetch(`http://192.160.1.202:5000/contrato/extender/${idContrato}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
