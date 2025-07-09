@@ -1,0 +1,163 @@
+.operarios-main {
+    background-color: red;
+    height: 100%;
+    width: 100%;
+}  
+
+.operarios {
+    background-color: rgb(255, 255, 255);
+    height: 350px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+}
+
+.operarios > .form-label {
+    width: 90%;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.operarios > .form-label > .form-input {
+    width: 100%;
+    height: 30px;
+    background-color: rgb(221, 221, 221);
+}
+
+.operarios > .contenedor-datos {
+    width: 90%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.operarios > .contenedor-datos > label {
+    border: none;
+    outline: none;
+    width: 47%;
+    height: 100%;
+    color: black;
+    background-color: rgb(221, 221, 221);
+}
+
+.operarios > .contenedor-datos-finales {
+    width: 90%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.operarios > .contenedor-datos-finales > .inputs-finales {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    width: 250px;
+    height: 100%;
+    color: black;
+    background-color: rgb(221, 221, 221);
+}
+
+.operarios > .contenedor-datos > label > input::placeholder {
+    color: rgb(68, 68, 68);
+}
+
+.btn-add-operarios {
+    background-color: rgb(34, 108, 168);
+    width: 100px;
+    height: 40px;
+}
+
+.btn-add-operarios:hover {
+    background-color: rgb(84, 135, 184);
+}
+
+.operarios > .contenedor-datos-finales > .inputs-finales > input,
+.operarios > .contenedor-datos > label > input,
+.form-input {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    margin: 0;
+    outline: none;
+    border-radius: 0;
+    background-color: transparent;
+}
+
+.operarios input::placeholder,
+.operarios select::placeholder {
+    color: rgb(68, 68, 68);
+}
+
+.operarios-table {
+    width: 100%;
+    height: auto;
+}
+
+.operarios-bien {
+    background-color: #d4e5ff;
+    height: auto;   
+    width: 100%;
+    padding: 10px;
+    padding-top: 65px;
+    padding-right: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Añadir estos estilos a tu archivo operarios.css existente */
+
+.botones-filtros {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+
+.btn-limpiar-filtros {
+    background-color: #e53e3e;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    height: 40px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-limpiar-filtros:hover {
+    background-color: #c53030;
+}
+
+.btn-add-operarios {
+    background-color: rgb(34, 108, 168);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-add-operarios:hover {
+    background-color: rgb(84, 135, 184);
+}

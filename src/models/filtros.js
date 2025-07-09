@@ -1,0 +1,43 @@
+export const filtros = {
+    hojaVida: "hojaVida", 
+    contrato: "contrato", 
+    incapacidades: "incapacidades", 
+    licenciaNoRemunerada: "licenciaNoRemunerada", 
+    otrosDocumentos: "otrosDocumentos",
+    cedula: "cedula",
+    carnetVacunas: "carnetVacunas",
+    liquidacion: "liquidacion",
+    otroSi: "otroSi",
+    conduccion: "conduccion",
+    antecedentes: "antecedentes",
+    certificadoLaboral: "certificadoLaboral",
+    bachillerato: "bachillerato",
+    certificadoEPS: "certificadoEPS",
+    induccion: "induccion",
+    otrosCursos: "otrosCursos",
+    cursosPosgrado: "cursosPosgrado",
+    cursosPregrado: "cursosPregrado",
+    libretaMilitar: "libretaMilitar", 
+    contratoInfo: "contratoInfo"   
+}
+
+export const cargos = [
+    "ADMINISTRATIVO",
+    "COORDINADORES",
+    "SUPERVISORES",
+    "TECNICOS",
+    "AUXILIARES",
+    "CONDUCTORES",
+    "ASISTENTE GERENCIA",
+    "RECEPCIONISTA",
+    "MENSAJERO",
+    "JARDINERIA",
+    "MANTENIMIENTO",
+    "ASEO Y CAFETERIA",
+    "ASEO Y SERVICIOS GENERALES",
+    "ASEO Y DESINFE",
+    "FUMIGACION",
+    "CUIDADORES",
+    "SECRETARIAS",
+    "APRENDIZ"
+]

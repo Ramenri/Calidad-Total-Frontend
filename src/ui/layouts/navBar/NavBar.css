@@ -1,0 +1,131 @@
+.interior {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    height: calc(100vh - 60px);
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    stroke: #E5E7EB;
+    stroke-width: 1%;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.interior.closed {
+    width: 50px;
+    padding-top: 10px;
+    align-items: flex-start;
+}
+
+
+.interior .open-btn {
+    background-color: #d1d5db; 
+    color: black;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px; 
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 10px;
+    display: none;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+}
+
+.interior.closed .open-btn {
+    display: block;
+}
+
+.interior.closed .navegacion {
+    display: none;
+}
+
+.section-operario {
+    margin-top: 60px; 
+    transition: margin-left 0.3s ease;
+    padding: 20px;
+    box-sizing: border-box;
+    height: calc(100vh - 60px); 
+}
+
+.section-operario.nav-closed {
+    margin-left: 50px;
+}
+
+.section-operario.nav-open {
+    margin-left: 250px; 
+}
+
+.navegacion {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    padding: 15px 0;
+}
+
+.navegacion > button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: rgb(67, 111, 161);
+    cursor: pointer;
+    font-size: 18px;
+    padding: 10px;
+    width: 80%;
+    height: 8%;
+    transition: background-color 0.3s ease;
+    border-radius: 0px;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+}
+
+.navegacion > button:hover,
+.navegacion > button.selected {
+    background-color: rgb(114, 114, 114);
+    color: white;
+}
+
+.close-btn-menu {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    color: rgb(114, 114, 114);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%; 
+    width: auto;
+    height: auto;
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn-menu:hover {
+    background-color: transparent;
+    color: rgb(197, 197, 197);
+}
+
+
+

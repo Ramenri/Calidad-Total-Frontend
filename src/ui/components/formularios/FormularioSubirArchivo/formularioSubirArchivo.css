@@ -1,0 +1,103 @@
+.formulario-subir-archivo {
+    background-color: rgba(0, 0, 0, 0.596);
+    backdrop-filter: blur(5px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-formulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: rgb(255, 255, 255);
+    width: 60%;
+    height: 80%;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close-btn {
+    width: 2rem;
+    height: 2rem;
+    color: rgb(255, 255, 255);
+    background-color: black;
+    border: none;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    background-color: rgb(129, 129, 129);
+}
+
+.label-file {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    width: 80%;
+    height: 6rem;
+}
+
+.label-file > input {
+    border: 1px solid black;
+}
+
+.label-file > input:hover {
+    border-color: rgb(129, 129, 129);
+}
+
+.label-file > select {
+    border: 1px solid black;
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 0.95rem;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    width: 50%;
+    height: 4rem;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: rgb(129, 129, 129);
+}
+
+.select-tipo-archivo {
+    background-color: red;
+    width: 100%;
+    height: 2.5rem;
+}
