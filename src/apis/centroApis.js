@@ -12,7 +12,7 @@ export const handlerObtenerCentroPorEmpresaId = async (idEmpresa) => {
 export const crearNuevoCentroConEmpresa = async (formData) => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch("http://192.160.1.202:5000/centroTrabajo/crear", {
+        const response = await fetch("http://192.168.1.202:5000/centroTrabajo/crear", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -34,7 +34,7 @@ export const crearNuevoCentroConEmpresa = async (formData) => {
 export const eliminarCentroPorId = async (idCentro) => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://192.160.1.202:5000/centroTrabajo/eliminar/${idCentro}`, {
+        const response = await fetch(`http://192.168.1.202:5000/centroTrabajo/eliminar/${idCentro}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -51,7 +51,7 @@ export const eliminarCentroPorId = async (idCentro) => {
 export const actualizarCentroPorId = async (formData) => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://192.160.1.202:5000/centroTrabajo/actualizar/${formData.id}`, {
+        const response = await fetch(`http://192.168.1.202:5000/centroTrabajo/actualizar/${formData.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

@@ -34,7 +34,7 @@ export const FormularioEditarOperario = ({ operario, onCancelar, onGuardadoExito
 
         const token = localStorage.getItem('token');
 
-        const respuesta = await fetch(`http://192.160.1.202:5000/operario/actualizar/${operario.id}`, {
+        const respuesta = await fetch(`http://192.168.1.202:5000/operario/actualizar/${operario.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

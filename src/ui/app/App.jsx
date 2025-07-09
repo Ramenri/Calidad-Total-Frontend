@@ -30,10 +30,10 @@ export const App = () =>{
             <Router>
                 <Routes>
                     <Route path="/" element={<Login />}/>
-                    <Route path="/operarios" element={<PrivateRoute  rolesPermitidos={["administrador"]} >
+                    <Route path="/operarios" element={<PrivateRoute  rolesPermitidos={["administrador", "usuario"]} >
                         {renderPaginas(<Operarios isNavOpen={isNavOpen} />)}
                     </PrivateRoute>}/>
-                    <Route path="/archivo/:idOperario" element={<PrivateRoute  rolesPermitidos={["administrador"]} >
+                    <Route path="/archivo/:idOperario" element={<PrivateRoute  rolesPermitidos={["administrador", "usuario"]} >
                         {<ArchivosOperario />}
                     </PrivateRoute>}/>
                     <Route path="/centroTrabajo" element={<PrivateRoute  rolesPermitidos={["administrador"]} >

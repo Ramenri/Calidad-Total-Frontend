@@ -34,7 +34,7 @@ export const UseFiltrosOperarios = () => {
 
     const fetchEmpresas = async () => {
         try {
-            const data = await fetchConManejoErrores("http://192.160.1.202:5000/empresa/todo");
+            const data = await fetchConManejoErrores("http://192.168.1.202:5000/empresa/todo");
             setEmpresas(data);
         } catch (error) {
             console.error("Error al cargar empresas:", error);
@@ -43,7 +43,7 @@ export const UseFiltrosOperarios = () => {
 
     const fetchCargos = async () => {
         try {
-            const data = await fetchConManejoErrores("http://192.160.1.202:5000/contrato/cargos");
+            const data = await fetchConManejoErrores("http://192.168.1.202:5000/contrato/cargos");
             setCargos(data);
         } catch (error) {
             console.error("Error al cargar cargos:", error);
@@ -52,7 +52,7 @@ export const UseFiltrosOperarios = () => {
 
     const fetchCentros = async () => {
         try {
-            const data = await fetchConManejoErrores("http://192.160.1.202:5000/centroTrabajo/todo");
+            const data = await fetchConManejoErrores("http://192.168.1.202:5000/centroTrabajo/todo");
             setCentros(data);
         } catch (error) {
             console.error("Error al cargar centros de trabajo:", error);
@@ -81,7 +81,7 @@ export const UseFiltrosOperarios = () => {
             const filtrosLimpios = Object.fromEntries(
                 Object.entries(filtros).filter(([_, v]) => v !== "")
             );
-            const data = await fetchConManejoErrores("http://192.160.1.202:5000/operario/filtrarOperarios", {
+            const data = await fetchConManejoErrores("http://192.168.1.202:5000/operario/filtrarOperarios", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(filtrosLimpios)
@@ -100,7 +100,7 @@ export const UseFiltrosOperarios = () => {
                 ...filtros,
                 empresa_id: empresaId
             };
-            const data = await fetchConManejoErrores(`http://192.160.1.202:5000/operario/operariosPorEmpresa/${empresaId}`, {
+            const data = await fetchConManejoErrores(`http://192.168.1.202:5000/operario/operariosPorEmpresa/${empresaId}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(filtrosConEmpresa)

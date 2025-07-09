@@ -1,6 +1,6 @@
 export const obtenerTodosLosDocumentosPorIdContrato = async (idContrato) => {
     try {
-        const response = await fetch(`http://192.160.1.202:5000/documento/buscarPorContrato/${idContrato}`);
+        const response = await fetch(`http://192.168.1.202:5000/documento/buscarPorContrato/${idContrato}`);
         const data = await response.json();
         return data
     } catch (error) {
@@ -10,7 +10,7 @@ export const obtenerTodosLosDocumentosPorIdContrato = async (idContrato) => {
 
 export const obtenerElArchivoPorUrl = async (url) => {
     try {
-        const response = await fetch(`http://192.160.1.202:5000/documento/archivos/${url}`)
+        const response = await fetch(`http://192.168.1.202:5000/documento/archivos/${url}`)
         const data = response.json();
         return data
     } catch (error) {
@@ -31,7 +31,7 @@ export const subirDocumentosContrato = async (formData) => {
         formDataNew.append("fecha_expedicion", formData.fecha_expedicion);
         formDataNew.append("cedula", formData.cedula);
 
-        const response = await fetch("http://192.160.1.202:5000/documento/guardar", {
+        const response = await fetch("http://192.168.1.202:5000/documento/guardar", {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -60,7 +60,7 @@ export const convertirBase64FileEnBlobAndAbrir = (base64) => {
 export const editarEstadoDelDocumento = async (idDocumento, estado) => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://192.160.1.202:5000/documento/cambiar_estado/${idDocumento}`, {
+        const response = await fetch(`http://192.168.1.202:5000/documento/cambiar_estado/${idDocumento}`, {
             method: "PUT",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -79,7 +79,7 @@ export const editarEstadoDelDocumento = async (idDocumento, estado) => {
 export const generarPdfDelOperario = async (contrato_id) => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://192.160.1.202:5000/documento/pdf/${contrato_id}`, {
+        const response = await fetch(`http://192.168.1.202:5000/documento/pdf/${contrato_id}`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`,

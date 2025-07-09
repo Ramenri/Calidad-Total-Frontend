@@ -1,6 +1,6 @@
 export const obtenerOperarioPorId = async (idOperario) => {
     try {
-        const response = await fetch(`http://192.160.1.202:5000/operario/buscar/${idOperario}`)
+        const response = await fetch(`http://192.168.1.202:5000/operario/buscar/${idOperario}`)
         const data = await response.json();
         return data
     } catch (error) {
@@ -11,7 +11,7 @@ export const obtenerOperarioPorId = async (idOperario) => {
 export const obtenerTodosLosOperarios = async () => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://192.160.1.202:5000/operario/obtenerTodos`, {
+        const response = await fetch(`http://192.168.1.202:5000/operario/obtenerTodos`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -27,7 +27,7 @@ export const obtenerTodosLosOperarios = async () => {
 export const crearOperarioConDatosBasicos = async (formData) => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://192.160.1.202:5000/operario/crearOperarioRelacionandoTodo`, {
+        const response = await fetch(`http://192.168.1.202:5000/operario/crearOperarioRelacionandoTodo`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -57,7 +57,7 @@ export const crearOperarioConDatosBasicos = async (formData) => {
 export const actualizarOperarioPorId = async (formData) => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://192.160.1.202:5000/operario/actualizar/${formData.idOperario}`, {
+        const response = await fetch(`http://192.168.1.202:5000/operario/actualizar/${formData.idOperario}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -116,7 +116,7 @@ export const filtrarOperariosCompleto = async (filtros) => {
         
         console.log("Filtros enviados al backend:", filtrosBackend);
         
-        const response = await fetch(`http://192.160.1.202:5000/operario/filtrarOperariosCompleto`, {
+        const response = await fetch(`http://192.168.1.202:5000/operario/filtrarOperariosCompleto`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
