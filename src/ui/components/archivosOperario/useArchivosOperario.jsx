@@ -3,7 +3,7 @@ import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { obtenerOperarioPorId } from "./../../../apis/operariosApis"
 import { obtenerTodosLosContratosPorIdOperarioYEmpresa } from "./../../../apis/contratosApis"
 import { obtenerEmpresaPorId } from "./../../../apis/empresasApis"
-import { handlerEditarEstadoDelContrato } from "./../../../apis/contratosApis"
+import { handlerActualizarContrato } from "./../../../apis/contratosApis";
 import { subirDocumentosContrato } from "./../../../apis/documentosApis"
 
 export const useArchivosOperario = () => {
@@ -11,6 +11,7 @@ export const useArchivosOperario = () => {
     const { idOperario } = useParams();
     const [searchParams] = useSearchParams();
     const navigation = useNavigate();
+    const [formularioEditarContrato, setFormularioEditarContrato] = useState(null);
     
     const [operario, setOperario] = useState({});
     const [contratos, setContratos] = useState([]);
@@ -57,10 +58,9 @@ export const useArchivosOperario = () => {
         setEmpresa(empresa);
     }
 
-    const handlerEditarDelContrato = async (idContrato, estado) => {
-        await handlerEditarEstadoDelContrato(idContrato, estado);
-        obtenerContratosDelOperario(empresaId, operario.id);
-    }
+    const handlerEditarContrato = async (datosActualizados) => {
+    await handlerActualizarContrato(datosActualizados);
+    };
     
     const handlerSubirDocumentosContrato = async (formData) => {
         formData.cedula = operario.numeroCedula;
@@ -80,8 +80,9 @@ export const useArchivosOperario = () => {
         handleToggleFormularioNuevoContrato,
         operario,
         empresa,
-        handlerEditarDelContrato,
         handlerSubirDocumentosContrato,
+        handlerEditarContrato,
+        obtenerContratosDelOperario,
         contratos,
         empresaId
     };

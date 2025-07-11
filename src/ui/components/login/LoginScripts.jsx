@@ -16,7 +16,6 @@ export const handleLogin = async (event, navigate) =>{
         const data = await response.json();
 
         if (response.ok){
-            console.log('Login exitoso:', data);
 
             localStorage.setItem('token', data.token);
 

@@ -78,7 +78,7 @@ export const FormularioOperariosPasos = ({ empresas, cargos, onClose }) => {
     // useEffect para filtrar centros de trabajo cuando cambia la empresa
     useEffect(() => {
         if (datosPersonales.empresa) {
-            const empresaSeleccionada = empresasNoAfiliadas.find(emp => emp.id === datosPersonales.empresa);
+            const empresaSeleccionada = empresasNoAfiliadas.find(emp => emp.id === Number(datosPersonales.empresa));
             setCentrosFiltrados(empresaSeleccionada?.centrosTrabajo || []);
         } else {
             setCentrosFiltrados([]);
@@ -182,7 +182,7 @@ export const FormularioOperariosPasos = ({ empresas, cargos, onClose }) => {
             console.log("Response de todo:", response);
             setOperarioNuevo(response.operario)
             setDatosGuardados(true);
-            return true;
+            return response.operario;
         } catch (error) {
             console.error("Error al guardar datos básicos:", error);
             alert("Error al guardar los datos. Por favor intente nuevamente.");
@@ -190,11 +190,11 @@ export const FormularioOperariosPasos = ({ empresas, cargos, onClose }) => {
         }
     };
 
-    const finalizarFormulario = async () => {
+    const finalizarFormulario = async (operario) => {
         try {
             setUploadingFiles(true);
-            const cedula = operarioNuevo.numeroCedula;
-            const contratoId = operarioNuevo.contrato_id;
+            const cedula = operario.numeroCedula;
+            const contratoId = operario.contrato_id;
 
             console.log("Contrato ID:", contratoId);
             console.log("Cédula:", cedula);
@@ -250,12 +250,13 @@ export const FormularioOperariosPasos = ({ empresas, cargos, onClose }) => {
         if (pasoActual === 1 && validarPaso1()) {
             setPasoActual(2);
         } else if (pasoActual === 2 && validarPaso2()) {
-            const guardado = await guardarDatosBasicos();
-            if (guardado) {
+            const operario = await guardarDatosBasicos();
+            if (operario) {
                 setPasoActual(3);
             }
         } else if (pasoActual === 3) {
-            await finalizarFormulario();
+            const operario = operarioNuevo;
+            await finalizarFormulario(operario);
         } else {
             setPasoActual(prev => prev + 1);
         }

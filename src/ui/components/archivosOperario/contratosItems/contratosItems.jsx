@@ -7,7 +7,7 @@ import { filtros } from "../../../../models/filtros";
 import { FiltrosDatosContrato } from "../filtrosDatosContrato/filtrosDatosContrato";
 
 
-export const ContratosItems = ({contrato, handlerEditarEstadoDelContrato, handlerSubirDocumentosContrato}) => {
+export const ContratosItems = ({contrato, handlerEditarEstadoDelContrato, handlerSubirDocumentosContrato, onEditarContrato}) => {
  
   const {
     expandedSections,
@@ -49,7 +49,9 @@ export const ContratosItems = ({contrato, handlerEditarEstadoDelContrato, handle
                   <button type="button" onClick={handlerShowExtenderForm} className="action-btn extend">
                     <FiCalendar />
                   </button>
-                  <button onClick={() => handleEditarContrato(contrato.id, contrato.estado)} className={contrato.estado ? "action-btn edit" : "action-btn edit inactivo"}>{contrato.estado ? <FiEdit /> : <FiEdit />}</button>
+                  <button onClick={onEditarContrato} className={contrato.estado ? "action-btn edit" : "action-btn edit inactivo"}>
+                    <FiEdit />
+                  </button>
                   <button onClick={() => handleDescargarContratoUnido(contrato.id)} className="action-btn view"><FiDownload /></button>
                   <span style={{fontSize: '12px', color: '#5f6368'}}>Inicio {contrato.fechaInicio}</span>
                   <span style={{fontSize: '12px', color: '#5f6368'}}>Fin {contrato.FechaFin}</span>

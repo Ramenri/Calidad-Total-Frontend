@@ -32,6 +32,7 @@ export const Operarios = ({isNavOpen}) => {
         handlerAbrirActualizarOperario,
         setAbrirActualizarOperario,
         handlerActualizarOperario,
+        obtenerEstadoOperario
     } = useOperarios();
 
     const renderActualizarFormularioOperario = () => {
@@ -110,7 +111,7 @@ export const Operarios = ({isNavOpen}) => {
                                     name="estado" 
                                     id="estado" 
                                     className="form-input" 
-                                    value={operarioSeleccionado.estado}
+                                    value={String(operarioSeleccionado.estado)}
                                     onChange={onChangeInputActualizarOperario}
                                 >
                                     <option value="true">Activo</option>
@@ -259,16 +260,23 @@ export const Operarios = ({isNavOpen}) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {listOperarios && listOperarios.length > 0 ? (
-                                    listOperarios.map((item, index) => (
+                                {listOperarios && listOperarios.length > 0 ? (                                   
+                                    listOperarios
+                                    .slice()
+                                    .sort((a, b) => {
+                                        const nombreA = `${a.apellido} ${a.nombre}`.toLowerCase();
+                                        const nombreB = `${b.apellido} ${b.nombre}`.toLowerCase();
+                                        return nombreA.localeCompare(nombreB);
+                                    })
+                                    .map((item, index) => (
                                         <tr key={index}>
                                             <td>{item.numeroCedula}</td>
-                                            <td>{item.nombre}</td>
+                                            <td>{`${item.apellido} ${item.nombre}`}</td>
                                             <td>{item.numeroTelefonico}</td>
                                             <td>{item.correo}</td>
                                             <td>
-                                                <span className={`status-badge ${item.estado ? "green" : "orange"}`}>
-                                                    {item.estado ? "Activado" : "Inactivo"}
+                                                <span className={`status-badge ${obtenerEstadoOperario(item) ? "green" : "orange"}`}>
+                                                    {obtenerEstadoOperario(item) ? "Activado" : "Inactivo"}
                                                 </span>
                                             </td>
                                             <td>

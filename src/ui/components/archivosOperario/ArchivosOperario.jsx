@@ -1,4 +1,6 @@
+import React, { useState } from 'react';
 import { useArchivosOperario } from './useArchivosOperario';
+import { FormularioEditarContrato } from '../formularios/FormularioEditarContrato/formularioEditarContrato';
 import "./ArchivosOperario.css"
 import { FormularioNuevoContrato } from '../formularios/FormularioNuevoContrato/FormularioNuevoContrato';
 import { ContratosItems } from './contratosItems/contratosItems';
@@ -16,10 +18,12 @@ export const ArchivosOperario = () => {
     handleToggleFormularioNuevoContrato,
     operario,
     empresa,
-    handlerEditarDelContrato,
+    handlerEditarContrato,
     handlerSubirDocumentosContrato,
+    obtenerContratosDelOperario,
     contratos
   } = useArchivosOperario();
+  const [formularioEditarContrato, setFormularioEditarContrato] = useState(null);
 
   return (
     <div className="archivos-operario">
@@ -69,10 +73,16 @@ export const ArchivosOperario = () => {
             <p>{operario.correo}</p>
           </div>
         </div>
-        <div 
-          className={operario.estado ? 'status-badge-bn' : 'status-badge-bn inactivo'}>
-            {operario.estado ? "activo": "inactivo"}
-        </div>
+          {(() => {
+            const asociacion = operario.empresas?.find(e => e.id === empresa.id);
+            const estadoActivo = asociacion?.estado_operario_en_empresa === true;
+
+            return (
+              <div className={estadoActivo ? 'status-badge-bn' : 'status-badge-bn inactivo'}>
+                {estadoActivo ? "activo" : "inactivo"}
+              </div>
+            );
+          })()}
       </div>
 
       <div className="contract-section">
@@ -80,11 +90,21 @@ export const ArchivosOperario = () => {
             <ContratosItems 
                 key={index} 
                 contrato={contrato}
-                handlerEditarEstadoDelContrato={handlerEditarDelContrato}
+                onEditarContrato={() => setFormularioEditarContrato(contrato)}
                 handlerSubirDocumentosContrato={handlerSubirDocumentosContrato}
             />
         ))}
       </div>
+      <FormularioEditarContrato
+        contrato={formularioEditarContrato}
+        idEmpresa={empresa.id}
+        onClose={() => setFormularioEditarContrato(null)}
+        onSubmit={async (datosActualizados) => {
+          await handlerEditarContrato(datosActualizados); // ahora ya existe
+          obtenerContratosDelOperario(empresa.id, operario.id);
+          setFormularioEditarContrato(null);
+        }}
+      />
 
       { toggleFormularioNuevoContrato && (
         <div className="formulario-nuevo-contrato-div">

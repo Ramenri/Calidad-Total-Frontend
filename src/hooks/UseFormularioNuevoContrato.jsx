@@ -185,7 +185,7 @@ export const useFormularioNuevoContrato = (setMostrarFormularioContrato, operari
     }
 
     useEffect(() => {
-        obtenerCentroPorEmpresaId(empresa.id);
+        obtenerCentroPorEmpresaId(Number(empresa.id));
     }, [empresa.id]);
 
     return {

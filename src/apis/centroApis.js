@@ -1,6 +1,6 @@
 export const handlerObtenerCentroPorEmpresaId = async (idEmpresa) => {
     try {
-        const response = await fetch(`http://192.160.1.202:5000/centroTrabajo/obtener/${idEmpresa}`);
+        const response = await fetch(`http://192.168.1.202:5000/centroTrabajo/obtener/${idEmpresa}`);
         const data = await response.json();
         console.log(data)
         return data.centros_de_trabajo;

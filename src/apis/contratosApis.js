@@ -28,23 +28,42 @@ export const handleDescargarContrato = async (idContrato) => {
     }
 }
 
-export const handlerEditarEstadoDelContrato = async (idContrato, estado) => {
-    try {
-      const token = localStorage.getItem('token');
-      const response = await fetch(`http://192.168.1.202:5000/contrato/actualizarEstado/${idContrato}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ estado: estado }),
-      });
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("Error al cambiar estado del documento:", error);
+export async function handlerActualizarContrato(datosActualizados) {
+  try {
+    const token = localStorage.getItem('token');
+
+    const datosTransformados = {
+      id: datosActualizados.id,
+      cargo: datosActualizados.cargo,
+      fecha_inicio: datosActualizados.fechaInicio,
+      fecha_fin: datosActualizados.FechaFin || datosActualizados.fechaFin, // compatible con ambas
+      centro_id: datosActualizados.centro_id,
+      estado: datosActualizados.estado,
+    };
+
+    const response = await fetch(`http://192.168.1.202:5000/contrato/actualizar/${datosActualizados.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(datosTransformados),
+    });
+
+    if (!response.ok) {
+      throw new Error("Error en la respuesta del servidor");
     }
-};
+
+    const data = await response.json();
+    return data;
+
+  } catch (error) {
+    console.error("Error al actualizar contrato:", error);
+    throw error;
+  }
+}
+
+
 
 export const crearContrato = async (formData) => {
     try {

@@ -1,7 +1,7 @@
 export const obtenerTodosLosAdmin = async () => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch("http://http://192.168.1.202:5000/usuario/obtenerTodos", {
+        const response = await fetch("http://192.168.1.202:5000/usuario/obtenerTodos", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -15,3 +15,5 @@ export const obtenerTodosLosAdmin = async () => {
         alert("lo siento courrio un error: " + error)
     }
 }
+
+{/* http://192.168.1.202:5000 */}

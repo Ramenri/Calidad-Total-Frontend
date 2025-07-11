@@ -114,7 +114,6 @@ export const useOperarios = () => {
     const handlerObtenerTodosLosOperarios = async () => {
         try {
             const data = await obtenerTodosLosOperarios();
-            console.log("Operarios obtenidos:", data);
             setListOperarios(data);
             setOperariosFiltrados(data);
         } catch (error) {
@@ -122,6 +121,16 @@ export const useOperarios = () => {
             setListOperarios([]);
             setOperariosFiltrados([]);
         }
+    };
+    const obtenerEstadoOperario = (operario) => {
+        const empresaSeleccionadaId = parseInt(formDataFiltrarOperarios.empresa);
+        const empresas = operario.empresas || [];
+
+        if (!isNaN(empresaSeleccionadaId)) {
+            const asociacion = empresas.find(e => e.id === empresaSeleccionadaId);
+            return asociacion?.estado_operario_en_empresa === true;
+        }
+        return empresas[0]?.estado_operario_en_empresa === true;
     };
 
     const handlerObtenerTodasLasEmpresas = async () => {
@@ -165,16 +174,33 @@ export const useOperarios = () => {
 
     const onChangeInputActualizarOperario = (e) => {
         const { name, value } = e.target;
-        
+
+        let newValue = value;
+
+        if (name === "estado") {
+            newValue = value === "true";
+        }
+
         setOperarioSeleccionado(prev => ({
             ...prev,
-            [name]: value
+            [name]: newValue
         }));
     };
 
     const handlerAbrirActualizarOperario = (operario) => {
-        console.log("operario: ", operario);
-        setOperarioSeleccionado({...operario});
+        const empresaSeleccionadaId = parseInt(formDataFiltrarOperarios.empresa) || operario.empresas?.[0]?.id;
+        
+        const estadoAsociacion = operario.empresas?.find(
+            e => e.id === empresaSeleccionadaId
+        )?.estado_operario_en_empresa ?? false;
+
+        console.log("Estado inicial:", estadoAsociacion);
+
+        setOperarioSeleccionado({
+            ...operario,
+            estado: estadoAsociacion
+        });
+
         setAbrirActualizarOperario(true);
     };
 
@@ -182,6 +208,7 @@ export const useOperarios = () => {
         e.preventDefault();
         try {
             console.log("data: ", operarioSeleccionado);
+            const empresaIdFinal = formDataFiltrarOperarios.empresa || (operarioSeleccionado.empresas?.[0]?.id ?? null);
             const dataBien = {
                 idOperario: operarioSeleccionado.id,
                 nombre: operarioSeleccionado.nombre,
@@ -189,8 +216,10 @@ export const useOperarios = () => {
                 numeroCedula: operarioSeleccionado.numeroCedula,
                 correo: operarioSeleccionado.correo,
                 numeroTelefonico: operarioSeleccionado.numeroTelefonico,
-                estado: operarioSeleccionado.estado
+                estado: operarioSeleccionado.estado,
+                empresa_id: empresaIdFinal
             };
+            console.log("Estado que se enviará:", operarioSeleccionado.estado, typeof operarioSeleccionado.estado);
             const data = await actualizarOperarioPorId(dataBien);
             
             // En lugar de recargar la página, actualizar la lista
@@ -236,5 +265,6 @@ export const useOperarios = () => {
         operarioSeleccionado,
         handlerActualizarOperario,
         cargandoFiltros,
+        obtenerEstadoOperario
     };
 };

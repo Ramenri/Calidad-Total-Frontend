@@ -70,6 +70,7 @@ export const actualizarOperarioPorId = async (formData) => {
                 correo: formData.correo,
                 numero_telefonico: formData.numeroTelefonico,
                 estado: formData.estado,
+                empresa_id: formData.empresa_id
             }),
         });
         const data = await response.json();
